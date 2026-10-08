@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sf-pipeline"
+version = "1.0.0"
+description = "Incremental (CDC) load pipeline on Snowflake Streams & Tasks, orchestrated from Python"
+requires-python = ">=3.10"
+dependencies = [
+  "snowflake-connector-python>=3.12",
+  "python-dotenv>=1.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.5"]
+
+[project.scripts]
+sfpipe = "sf_pipeline.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

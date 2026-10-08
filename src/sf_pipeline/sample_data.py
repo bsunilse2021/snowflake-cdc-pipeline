@@ -2,8 +2,8 @@
 from __future__ import annotations
 
 import random
-from datetime import datetime, timedelta, timezone
 from collections.abc import Iterator
+from datetime import datetime, timedelta, timezone
 
 STATUSES = ["NEW", "PAID", "SHIPPED", "DELIVERED", "CANCELLED"]
 CHANNELS = ["web", "mobile", "store", "partner"]

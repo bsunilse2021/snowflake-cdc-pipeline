@@ -36,7 +36,7 @@ class Settings:
     task_schedule: str = "5 MINUTE"
 
     @classmethod
-    def from_env(cls) -> "Settings":
+    def from_env(cls) -> Settings:
         s = cls(
             account=_req("SNOWFLAKE_ACCOUNT"),
             user=_req("SNOWFLAKE_USER"),

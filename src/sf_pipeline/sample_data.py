@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import random
 from datetime import datetime, timedelta, timezone
-from typing import Iterator
+from collections.abc import Iterator
 
 STATUSES = ["NEW", "PAID", "SHIPPED", "DELIVERED", "CANCELLED"]
 CHANNELS = ["web", "mobile", "store", "partner"]

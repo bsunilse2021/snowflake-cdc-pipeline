@@ -55,6 +55,17 @@ tests/            unit tests (no Snowflake needed)
    sfpipe migrate                # re-applies it
    ```
 
+
+## Dashboard (Streamlit)
+```bash
+pip install -r requirements.txt     # adds streamlit + pandas
+cp .streamlit/secrets.toml.example .streamlit/secrets.toml   # fill in (or keep using .env)
+streamlit run app.py
+```
+Tabs: **Overview** (pending stream changes, row counts, task state, last run, reconciliation) · **Run history** (charts) · **Demo controls** (seed, simulate changes, run incremental load) · **Benchmark** · **Schema migrations**.
+
+Free hosting on **Streamlit Community Cloud**: push the repo to GitHub, go to share.streamlit.io, click *Create app*, pick the repo, set the main file to `app.py`, then paste the contents of your secrets file under *Advanced settings > Secrets*. Set `APP_PASSWORD` so strangers cannot trigger runs on your Snowflake credits.
+
 ## Where it is "hosted"
 - **Pipeline runtime:** Snowflake itself (Stream + Task + stored procedure run inside your account; nothing to host).
 - **Code:** GitHub. CI runs lint + tests on every push; `deploy.yml` applies migrations on version tags (add secrets `SNOWFLAKE_ACCOUNT`, `SNOWFLAKE_USER`, `SNOWFLAKE_PASSWORD` and variables `SNOWFLAKE_ROLE`, `SNOWFLAKE_WAREHOUSE`, `SNOWFLAKE_DATABASE` under a `production` environment).
